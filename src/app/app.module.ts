@@ -7,7 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 // Modulos
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NotifierModule, NotifierOptions } from 'angular-notifier';
+import { NotifierModule } from 'angular-notifier';
+import { opcionesNotifier } from './config/config';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 import { AppComponent } from './app.component';
@@ -20,47 +21,6 @@ import { PipesModule } from './pipes/pipes.module';
 import { PerfilComponent } from './components/perfil/perfil.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
-
-const customNotifierOptions: NotifierOptions = {
-  position: {
-    horizontal: {
-    position: 'right',
-    distance: 12
-  },
-  vertical: {
-    position: 'bottom',
-    distance: 12,
-    gap: 10
-  }
-  },
-  theme: 'material',
-  behaviour: {
-    autoHide: 5000,
-    onClick: 'hide',
-    onMouseover: 'pauseAutoHide',
-    showDismissButton: true,
-    stacking: 4
-  },
-  animations: {
-    enabled: true,
-    show: {
-      preset: 'slide',
-      speed: 300,
-      easing: 'ease'
-    },
-    hide: {
-      preset: 'slide',
-      speed: 300,
-      easing: 'ease',
-      offset: 50
-    },
-    shift: {
-      speed: 300,
-      easing: 'ease'
-    },
-    overlap: 150
-  }
-};
 
 @NgModule({
   declarations: [
@@ -78,7 +38,7 @@ const customNotifierOptions: NotifierOptions = {
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NotifierModule.withConfig(customNotifierOptions),
+    NotifierModule.withConfig(opcionesNotifier),
     SocketIoModule.forRoot(config),
     PipesModule
   ],
