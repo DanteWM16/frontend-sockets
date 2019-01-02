@@ -19,6 +19,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { PagesComponent } from './pages/pages.component';
 import { PipesModule } from './pipes/pipes.module';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
 
@@ -30,7 +31,8 @@ const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
     NopagefoundComponent,
     HeaderComponent,
     SidebarComponent,
-    PerfilComponent
+    PerfilComponent,
+    CrearUsuarioComponent
   ],
   imports: [
     BrowserModule,
