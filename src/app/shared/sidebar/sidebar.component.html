@@ -1,4 +1,19 @@
 <aside class="sidebar sidebar--hidden">
     <div class="scroll-wrapper scrollbar-inner" style="position: relative;">
+        <div class="user">
+            <div class="user__info" data-toggle="dropdown">
+                <img class="user__img" [src]="usuario.img | imagen">
+                <div>
+                    <div class="user__name">{{ fullname }}</div>
+                    <div class="user__email">{{ usuario.email }}</div>
+                </div>
+            </div>
+
+            <div class="dropdown-menu">
+                <a class="dropdown-item">Ver Perfil</a>
+                <a class="dropdown-item">Configuraciones</a>
+                <a class="dropdown-item" (click)="_usuarioService.logout()">Cerrar Sesión</a>
+            </div>
+        </div>
     </div>
 </aside>

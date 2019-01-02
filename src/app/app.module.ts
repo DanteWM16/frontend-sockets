@@ -16,6 +16,8 @@ import { NopagefoundComponent } from './shared/nopagefound/nopagefound.component
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { PagesComponent } from './pages/pages.component';
+import { PipesModule } from './pipes/pipes.module';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
 
@@ -67,7 +69,8 @@ const customNotifierOptions: NotifierOptions = {
     PagesComponent,
     NopagefoundComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,8 @@ const customNotifierOptions: NotifierOptions = {
     ReactiveFormsModule,
     HttpClientModule,
     NotifierModule.withConfig(customNotifierOptions),
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    PipesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
