@@ -1,4 +1,4 @@
-<div class="fondo-negro animated fadeIn" [ngClass]="oculto">
+<div class="fondo-negro animated fadeIn" [ngClass]="_perfilService.oculto">
     <div class="modal" style="display: block;" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -22,31 +22,31 @@
                                     </div>
 
                                     <div class="card-body">
-                                        <form>
+                                        <form NgNativeValidate [formGroup]="actualizarPerfil">
                                             <div class="row">
 
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label>Nombre</label>
-                                                        <input type="text" class="form-control">
+                                                        <input type="text" formControlName="nombre" class="form-control">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label>Apellido Paterno</label>
-                                                        <input type="text" class="form-control">
+                                                        <input type="text" formControlName="apellidoP" class="form-control">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label>Apellido Materno</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" formControlName="apellidoM" class="form-control">
                                                 </div>
 
                                                 <div class="col-md-12">
                                                     <label>Email</label>
-                                                    <input type="email" class="form-control">
+                                                    <input type="email" formControlName="email" class="form-control">
                                                 </div>
 
                                                 <div class="clearfix"></div>
@@ -54,8 +54,8 @@
                                             </div>
 
                                             <div class="mt-5 text-center">
-                                                <button type="button" class="btn btn-primary">Actualizar</button>
-                                                <a class="btn btn-light" (click)="oculto = 'oculto'">Cancelar</a>
+                                                <button type="button" class="btn btn-primary" [disabled]="!actualizarPerfil.valid" (click)="modificarUsuario(this.actualizarPerfil.value)">Actualizar</button>
+                                                <a class="btn btn-light" (click)="oculto = _perfilService.ocultarModalPerfil()">Cancelar</a>
                                             </div>
                                         </form>
                                     </div>

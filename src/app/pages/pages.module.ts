@@ -6,11 +6,15 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 
 // Pipe Module
 import { PipesModule } from '../pipes/pipes.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../clases/interceptor';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     UsuariosComponent
+  ],
+  providers: [
   ],
   imports: [
     CommonModule,

@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { UsuarioService, WebsocketService } from './services.index';
+import { UsuarioService, WebsocketService, SubirarchivoService } from './services.index';
 
 @NgModule({
     imports: [
@@ -14,7 +14,8 @@ import { UsuarioService, WebsocketService } from './services.index';
 
     providers: [
         UsuarioService,
-        WebsocketService
+        WebsocketService,
+        SubirarchivoService
     ],
 
     declarations: []

@@ -1,4 +1,5 @@
 export interface Usuario {
+    _id: string;
     nombre: string;
     apellidoP: string;
     apellidoM: string;
@@ -10,5 +11,4 @@ export interface Usuario {
     status?: string;
     lingreso?: string;
     creadoX?: string;
-    id?: string;
 }
