@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Modulos
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NotifierModule } from 'angular-notifier';
 import { opcionesNotifier } from './config/config';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
@@ -20,6 +20,8 @@ import { PagesComponent } from './pages/pages.component';
 import { PipesModule } from './pipes/pipes.module';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
+import { AuthInterceptor } from './interceptor/interceptor';
+
 
 const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
 
@@ -44,7 +46,13 @@ const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
     SocketIoModule.forRoot(config),
     PipesModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+    useClass:  AuthInterceptor,
+    multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

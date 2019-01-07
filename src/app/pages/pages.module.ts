@@ -6,11 +6,14 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 
 // Pipe Module
 import { PipesModule } from '../pipes/pipes.module';
+import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
+
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    ListaUsuariosComponent
   ],
   imports: [
     CommonModule,

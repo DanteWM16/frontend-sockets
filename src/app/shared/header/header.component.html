@@ -4,12 +4,12 @@
     </div>
 
     <div class="logo hidden-sm-down">
-        <img src="assets/img/LeakLab-114.png">
+        <!--<img src="assets/img/LeakLab-114.png">-->
     </div>
 
     <form class="search">
         <div class="search__inner">
-            <input type="text" class="search__text" placeholder="Busqueda general...">
+            <input #input (keyup.enter)="buscar(input.value)" type="text" class="search__text" placeholder="Busqueda general...">
             <i class="zmdi zmdi-search search__helper" data-sa-action="search-close"></i>
         </div>
     </form>

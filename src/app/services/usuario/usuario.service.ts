@@ -7,6 +7,7 @@ import { Observable, throwError } from 'rxjs';
 import swal from 'sweetalert2';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +16,8 @@ export class UsuarioService {
   usuario: Usuario;
   token: string;
   menu: any[] = [];
+  usuarios: Usuario[] = [];
+
 
   constructor(
     public http: HttpClient,
@@ -70,10 +73,50 @@ export class UsuarioService {
   }
 
   // CRUD usuario
-  crearUsuario() {}
+// ==================================================
+// Dar de alta nuevo usuario
+// ==================================================
+  crearUsuario( usuario: Usuario) {
+    const url = URL_SERVICIOS + '/usuario';
+    return this.http.post<Usuario>( url, usuario, { observe: 'response' } );
+  }
+
+
+// ==================================================
+// Modificar usuario
+// ==================================================
   modificarUsuario() {}
+
+
+// ==================================================
+// Cambiar imagen de usuario
+// ==================================================
   cambiarImagenUsuario() {}
-  cargarUsuarios() {}
+
+
+
+// ==================================================
+// Cargar Listado de usuarios
+// ==================================================
+  cargarUsuarios(tipo: string, desde: number = 0) {
+
+    const url = URL_SERVICIOS + '/usuario/?desde=' + desde;
+     return this.http.get(url);
+    // return this.http.post<Usuario>( url, usuario, { observe: 'response' } );
+  }
+
+
+// ==================================================
+// Borrar usuarios
+// ==================================================
   borrarUsuario() {}
-  buscarUsuarios() {}
+
+
+// ==================================================
+// Buscar Usuarios
+// ==================================================
+  buscarUsuarios(busqueda: string) {
+    const url = URL_SERVICIOS + '/busqueda/usuarios/' + busqueda;
+    return this.http.get<Usuario[]>( url, { observe: 'response'} );
+  }
 }
