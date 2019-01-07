@@ -4,6 +4,7 @@ import { UsuarioService } from '../services/usuario/usuario.service';
 import { Usuario } from 'src/app/interfaces/usuario';
 import swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { WebsocketService } from '../services/websocket/websocket.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public router: Router,
-    public _usuarioService: UsuarioService
+    public _usuarioService: UsuarioService,
+    public _wsService: WebsocketService
   ) { }
 
   ngOnInit() {
@@ -32,7 +34,10 @@ export class LoginComponent implements OnInit {
     this._usuarioService.login( usuario )
         .subscribe(( data: any ) => {
           const datos = data.body;
-          this._usuarioService.guardarStorage( datos.id, datos.token, datos.usuario, 'No hay');
+          this._usuarioService.guardarStorage( datos.id, datos.token, datos.usuario, datos.menu);
+          if ( this._wsService.socketStatus === false ) {
+            this._wsService.conectarSocket();
+          }
           this.router.navigate(['/dashboard']);
         },
         (error: any) => {

@@ -9,6 +9,7 @@ import { ModificarU } from '../../interfaces/modificarPerfil';
 import { tap } from 'rxjs/operators';
 import { PerfilService } from '../../components/perfil/perfil.service';
 import { SubirarchivoService } from '../subirarchivo/subirarchivo.service';
+import { WebsocketService } from '../websocket/websocket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,8 @@ export class UsuarioService {
     public http: HttpClient,
     public router: Router,
     public _perfilService: PerfilService,
-    public _subirArchivo: SubirarchivoService
+    public _subirArchivo: SubirarchivoService,
+    public _wsService: WebsocketService
   ) {
     this.cargarStorage();
   }
@@ -45,6 +47,8 @@ export class UsuarioService {
     localStorage.removeItem('id');
     localStorage.removeItem('menu');
     localStorage.removeItem('usuario');
+
+    this._wsService.desconectarSocket();
 
     this.router.navigate(['/login']);
   }
@@ -81,14 +85,14 @@ export class UsuarioService {
   // CRUD usuario
   crearUsuario() {}
   modificarUsuario( usuario: ModificarU, id?: string ) {
-    const url = URL_SERVICIOS + '/usuario/' + this.id;
-
+    let url = URL_SERVICIOS + '/usuario/';
+    url += this.id;
     return this.http.put<Usuario>(url, usuario, { observe: 'response' } )
               .pipe(
                 tap( ( data: any ) => {
                   const datos = data.body;
                   this.usuario = datos.usuario;
-                  if ( !id ) {
+                  if ( id === datos.usuario._id ) {
                     const usuarioDB: Usuario = datos.usuario;
                     this.guardarStorage(this.usuario._id, this.token, usuarioDB, 'menu');
                     this.notUsuario.emit(datos);
@@ -110,10 +114,11 @@ export class UsuarioService {
                 }, (error: any) => {
                   swal({
                     title: 'Error al actualizar usuario',
-                    text: error.error.err.errors.email.message,
+                    text: 'revise los datos proporcionados',
                     type: 'error',
                     background: 'rgba(0, 0, 0, 0.96)'
                   });
+                  console.log(error);
                   this._perfilService.ocultarModalPerfil();
                 }
                 )

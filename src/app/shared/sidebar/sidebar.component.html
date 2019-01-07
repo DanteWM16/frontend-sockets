@@ -1,5 +1,6 @@
 <aside class="sidebar sidebar--hidden">
     <div class="scroll-wrapper scrollbar-inner" style="position: relative;">
+
         <div class="user">
             <div class="user__info" data-toggle="dropdown">
                 <img class="user__img" [src]="usuario.img | imagen">
@@ -15,5 +16,20 @@
                 <a class="dropdown-item" (click)="_usuarioService.logout()">Cerrar Sesión</a>
             </div>
         </div>
+
+        <ul class="navigation">
+            <li class="navigation__active"><a><i class="zmdi zmdi-home"></i> Inicio</a></li>
+
+            <li *ngFor="let menu of _sidebarService.menu" class="navigation__sub @@variantsactive">
+                <a href=""><i [class]="menu.icono"></i> {{ menu.titulo }}</a>
+
+                <ul>
+                    <li *ngFor="let submenu of menu.submenu" class="@@sidebaractive">
+                        <a [routerLink]="[ submenu.url ]">{{ submenu.titulo }}</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
     </div>
 </aside>

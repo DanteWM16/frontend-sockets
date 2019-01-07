@@ -46,4 +46,13 @@ export class WebsocketService {
       });
     });
   }
+
+  desconectarSocket() {
+    this.socket.disconnect();
+  }
+
+  conectarSocket() {
+    this.socket.connect();
+  }
+
 }

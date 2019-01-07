@@ -1,6 +1,8 @@
 import { NotifierOptions } from 'angular-notifier';
+import { SocketIoConfig } from 'ngx-socket-io';
 
 export const URL_SERVICIOS = 'http://localhost:5000';
+export const configSockets: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
 export const opcionesNotifier: NotifierOptions = {
     position: {
       horizontal: {

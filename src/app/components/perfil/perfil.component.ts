@@ -85,7 +85,7 @@ export class PerfilComponent implements OnInit {
   modificarUsuario() {
     const usuarioActualizado: ModificarU = this.actualizarPerfil.value;
     console.log(usuarioActualizado);
-    this._usuarioService.modificarUsuario(usuarioActualizado)
+    this._usuarioService.modificarUsuario(usuarioActualizado, this._usuarioService.id)
         .subscribe((resp) => {
           this.usuario = this._usuarioService.usuario;
           this.actualizarPerfil.patchValue({

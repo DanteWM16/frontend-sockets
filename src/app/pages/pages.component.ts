@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NotifierService } from 'angular-notifier';
 import { WebsocketService } from '../services/websocket/websocket.service';
 import { UsuarioService } from '../services/usuario/usuario.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-pages',
@@ -11,6 +12,7 @@ import { UsuarioService } from '../services/usuario/usuario.service';
 export class PagesComponent implements OnInit {
 
   private notifier: NotifierService;
+  private listenWs: Subscription;
 
   constructor(
     public _wsService: WebsocketService,
@@ -21,9 +23,9 @@ export class PagesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._wsService.checkStatus();
-    this._wsService.listen('logueate-usuario').subscribe(() => {
-      this._wsService.loginWS( this._usuarioService.usuario);
-    });
+    // this._wsService.checkStatus();
+
+    this._wsService.loginWS( this._usuarioService.usuario);
   }
+
 }

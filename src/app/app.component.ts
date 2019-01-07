@@ -9,8 +9,10 @@ import { NotifierService } from 'angular-notifier';
 export class AppComponent {
   private readonly notifier: NotifierService;
 
-  constructor( notifierService: NotifierService ) {
-    this.notifier = notifierService;
+  constructor(
+    notifierService: NotifierService
+     ) {
+       this.notifier = notifierService;
   }
   title = 'frontend';
 }
