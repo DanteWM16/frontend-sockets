@@ -112,12 +112,28 @@ export class UsuarioService {
                     background: 'rgba(0, 0, 0, 0.96)'
                   });
                 }, (error: any) => {
-                  swal({
-                    title: 'Error al actualizar usuario',
-                    text: 'revise los datos proporcionados',
-                    type: 'error',
-                    background: 'rgba(0, 0, 0, 0.96)'
-                  });
+                  if ( error.status !== 401 ) {
+                    swal({
+                      title: 'Error al actualizar usuario',
+                      text: 'revise los datos proporcionados',
+                      type: 'error',
+                      background: 'rgba(0, 0, 0, 0.96)'
+                    });
+                    this._perfilService.ocultarModalPerfil();
+                    return;
+                  }
+
+                  if ( error.status === 403 ) {
+                    swal({
+                      title: 'Error al actualizar usuario',
+                      text: 'No tienes permiso para actualizar este usuario',
+                      type: 'error',
+                      background: 'rgba(0, 0, 0, 0.96)'
+                    });
+                    this._perfilService.ocultarModalPerfil();
+                    return;
+                  }
+
                   console.log(error);
                   this._perfilService.ocultarModalPerfil();
                 }
