@@ -3,12 +3,17 @@
 <header class="content__title"></header>
 <h1>Lista de usuarios registrados en sistema</h1><small>TOTAL: {{ totalRegistros }}</small>
 <hr>
-<form class="search">
-        <div class="search__inner">
-            <input #input (keyup)="buscarUsuarios( input.value )" type="text" class="search__text" placeholder="Busqueda usuario...">
-            <i class="zmdi zmdi-search search__helper" data-sa-action="search-close"></i>
-        </div>
-    </form>
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-sm-12 ">
+        <form class="search">
+            <div class="search__inner">
+                <input #input (keyup)="buscarUsuarios( input.value )" type="text" class="search__text" placeholder="Busqueda usuario...">
+                <i class="zmdi zmdi-search search__helper" data-sa-action="search-close"></i>
+            </div>
+        </form>
+    </div>
+</div>
+
 <hr>
 
 <!--<div class="toolbar">
@@ -36,8 +41,9 @@
                             <small>{{ usuario.email }}</small>
                             <small>{{ usuario.role }}</small>
                         </div>
-        
-                        <button class="contacts__btn"><i class="zmdi zmdi-edit"></i></button>
+                        
+                        <button (click)="_crearUsuarioService.mostrarModalCrearUsuario(usuario._id)" class="contacts__btn"><i class="zmdi zmdi-edit"></i></button>
+                        <!--<button class="contacts__btn"><i class="zmdi zmdi-minus-circle"></i></button>-->
                     </div>
             </div>
     </div>
@@ -55,6 +61,8 @@
             <li class="page-item pagination-last"><a class="page-link" href="#"></a></li>
         </ul>
     </nav>
+
+    <a (click)="_crearUsuarioService.mostrarModalCrearUsuario()" class="btn btn-light btn--action btn--fixed"><i class="zmdi zmdi-plus"></i></a>
     
 
 

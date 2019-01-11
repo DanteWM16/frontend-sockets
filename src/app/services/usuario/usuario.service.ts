@@ -98,7 +98,7 @@ export class UsuarioService {
 // ==================================================
 // Cargar Listado de usuarios
 // ==================================================
-  cargarUsuarios(tipo: string, desde: number = 0) {
+  cargarUsuarios( desde: number) {
 
     const url = URL_SERVICIOS + '/usuario/?desde=' + desde;
      return this.http.get(url);
@@ -119,4 +119,5 @@ export class UsuarioService {
     const url = URL_SERVICIOS + '/busqueda/usuarios/' + busqueda;
     return this.http.get<Usuario[]>( url, { observe: 'response'} );
   }
+
 }

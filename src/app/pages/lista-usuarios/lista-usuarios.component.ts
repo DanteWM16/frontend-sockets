@@ -3,7 +3,7 @@ import { Usuario } from 'src/app/interfaces/usuario';
 import { UsuarioService } from '../../services/usuario/usuario.service';
 import swal from 'sweetalert2';
 import { HttpRequest } from '@angular/common/http';
-
+import { CrearUsuarioService } from 'src/app/components/crear-usuario/crear-usuario.service';
 @Component({
   selector: 'app-lista-usuarios',
   templateUrl: './lista-usuarios.component.html',
@@ -12,23 +12,41 @@ import { HttpRequest } from '@angular/common/http';
 export class ListaUsuariosComponent implements OnInit {
 
   usuarios: Usuario[] = [];
-  desde: string;
-  totalRegistros = 0;
+  desde: number;
+  totalRegistros: number = 0;
+  oculto: string;
 
   constructor(
-    public _usuarioService: UsuarioService
+
+    public _usuarioService: UsuarioService,
+    public _crearUsuarioService: CrearUsuarioService
+
   ) { }
 
   ngOnInit() {
+
     this.cargarUsuarios();
+    this._crearUsuarioService.notificar.subscribe((resp:any) => {
+
+      
+      
+       if( resp.tipo === 'usuarioNuevo') {
+         //this._usuarioService.cargarUsuarios();
+         this.usuarios.push( resp.data );
+          
+          this.totalRegistros += 1;
+       }
+    })
   }
 
 // ======================================================
 // Mostrar lista de usuarios registrados en sistema
 // ======================================================
-  cargarUsuarios() {
+  cargarUsuarios( ) {
+
     this._usuarioService.cargarUsuarios( this.desde )
     .subscribe( (resp: any) => {
+      
       this.totalRegistros = resp.conteo;
       this.usuarios = resp.usuarios;
     }, ( err ) => {
@@ -51,9 +69,17 @@ export class ListaUsuariosComponent implements OnInit {
     this._usuarioService.buscarUsuarios( busqueda )
     .subscribe( ( data: any ) => {
       const resp = data.body;
+      
       this.usuarios = resp.usuarios;
+      var conteo = this.usuarios.length;
+      this.totalRegistros = conteo
     }, (error: any) => {
-      console.log(error);
+      swal({
+        title: 'Error al buscar usuario',
+        text: error,
+        type: 'warning',
+        background: 'rgba(0,0,0,0.96)'
+      });
     });
   }
 }
