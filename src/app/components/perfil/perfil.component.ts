@@ -30,6 +30,7 @@ export class PerfilComponent implements OnInit {
 
   ngOnInit() {
     this.usuario = this._usuarioService.usuario;
+<<<<<<< HEAD
     console.log(this.usuario);
     this.actualizarPerfil = new FormGroup({
       nombre: new FormControl( this.usuario.nombre, Validators.required ),
@@ -49,6 +50,9 @@ export class PerfilComponent implements OnInit {
         });
       }
     });
+=======
+    this.oculto = 'oculto';
+>>>>>>> warsystem
   }
 
   seleccionarImagen( archivo: File) {

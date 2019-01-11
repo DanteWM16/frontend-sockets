@@ -14,6 +14,7 @@ import { WebsocketService } from '../websocket/websocket.service';
 declare var jQuery: any;
 declare var $: any;
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,7 +24,12 @@ export class UsuarioService {
   usuario: Usuario;
   token: string;
   menu: any[] = [];
+<<<<<<< HEAD
   id: string;
+=======
+  usuarios: Usuario[] = [];
+
+>>>>>>> warsystem
 
   constructor(
     public http: HttpClient,
@@ -86,6 +92,7 @@ export class UsuarioService {
   }
 
   // CRUD usuario
+<<<<<<< HEAD
   crearUsuario() {}
   modificarUsuario( usuario: ModificarU, id?: string ) {
     let url = URL_SERVICIOS + '/usuario/';
@@ -175,4 +182,53 @@ export class UsuarioService {
       stroke: '#4d89f9'
     });
   }
+=======
+// ==================================================
+// Dar de alta nuevo usuario
+// ==================================================
+  crearUsuario( usuario: Usuario) {
+    const url = URL_SERVICIOS + '/usuario';
+    return this.http.post<Usuario>( url, usuario, { observe: 'response' } );
+  }
+
+
+// ==================================================
+// Modificar usuario
+// ==================================================
+  modificarUsuario() {}
+
+
+// ==================================================
+// Cambiar imagen de usuario
+// ==================================================
+  cambiarImagenUsuario() {}
+
+
+
+// ==================================================
+// Cargar Listado de usuarios
+// ==================================================
+  cargarUsuarios( desde: number) {
+
+    const url = URL_SERVICIOS + '/usuario/?desde=' + desde;
+     return this.http.get(url);
+    // return this.http.post<Usuario>( url, usuario, { observe: 'response' } );
+  }
+
+
+// ==================================================
+// Borrar usuarios
+// ==================================================
+  borrarUsuario() {}
+
+
+// ==================================================
+// Buscar Usuarios
+// ==================================================
+  buscarUsuarios(busqueda: string) {
+    const url = URL_SERVICIOS + '/busqueda/usuarios/' + busqueda;
+    return this.http.get<Usuario[]>( url, { observe: 'response'} );
+  }
+
+>>>>>>> warsystem
 }

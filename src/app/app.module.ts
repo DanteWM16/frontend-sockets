@@ -21,8 +21,13 @@ import { PagesComponent } from './pages/pages.component';
 import { PipesModule } from './pipes/pipes.module';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
+<<<<<<< HEAD
 import { AuthInterceptor } from './clases/interceptor';
 import { ModalPersonalComponent } from './components/modal-personal/modal-personal.component';
+=======
+import { AuthInterceptor } from './interceptor/interceptor';
+
+>>>>>>> warsystem
 
 const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
 
@@ -52,8 +57,13 @@ const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
+<<<<<<< HEAD
       useClass: AuthInterceptor,
       multi: true
+=======
+    useClass:  AuthInterceptor,
+    multi: true
+>>>>>>> warsystem
     }
   ],
   bootstrap: [AppComponent]

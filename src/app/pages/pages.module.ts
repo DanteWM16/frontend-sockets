@@ -8,17 +8,26 @@ import { configSockets } from '../config/config';
 
 // Pipe Module
 import { PipesModule } from '../pipes/pipes.module';
+<<<<<<< HEAD
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../clases/interceptor';
 import { PersonalComponent } from './personal/personal.component';
+=======
+import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
+
+>>>>>>> warsystem
 
 @NgModule({
   declarations: [
     DashboardComponent,
     UsuariosComponent,
+<<<<<<< HEAD
     PersonalComponent
   ],
   providers: [
+=======
+    ListaUsuariosComponent
+>>>>>>> warsystem
   ],
   imports: [
     CommonModule,
