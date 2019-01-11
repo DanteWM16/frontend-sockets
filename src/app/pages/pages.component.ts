@@ -4,6 +4,9 @@ import { WebsocketService } from '../services/websocket/websocket.service';
 import { UsuarioService } from '../services/usuario/usuario.service';
 import { Subscription } from 'rxjs';
 
+declare var jQuery: any;
+declare var $: any;
+
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',
@@ -24,6 +27,17 @@ export class PagesComponent implements OnInit {
 
   ngOnInit() {
     // this._wsService.checkStatus();
+
+    // Easy Pie Chart
+
+    $('.easy-pie-chart').easyPieChart({
+      barColor: 'rgba(255,87,51,255',
+      scaleColor: false,
+      trackColor: 'black',
+      lineWidth: 3,
+      lineCap: 'circle',
+      size: 80
+    });
 
     this._wsService.loginWS( this._usuarioService.usuario);
   }

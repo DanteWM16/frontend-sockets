@@ -10007,6 +10007,11 @@ textarea {
     color: #ffffff;
 }
 
+.logo img {
+    width: 174px;
+    height: 40px;
+}
+
 .top-nav {
     list-style: none;
     margin: 0 0 0 auto;
@@ -10294,7 +10299,7 @@ textarea {
 
 .top-menu>li>a {
     line-height: 100%;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(221, 91, 15, 0.85);
     font-weight: 600;
     text-transform: uppercase;
 }
@@ -10561,7 +10566,7 @@ textarea {
 }
 
 .navigation li:not(.navigation__active):not(.navigation__sub--active) a:hover {
-    background-color: rgba(255, 255, 255, 0.04);
+    background-color: #FF5733;
     color: #ffffff;
 }
 
@@ -10588,7 +10593,7 @@ textarea {
 
 .navigation>.navigation__active>a,
 .navigation>.navigation__sub--active>a {
-    background-color: rgba(255, 255, 255, 0.06);
+    background-color: #FF5733;
     color: #ffffff;
 }
 
@@ -11784,6 +11789,8 @@ textarea {
 .login__block__header>img {
     display: block;
     margin-bottom: 0.6rem;
+    width: 174px;
+    height: 40px;
 }
 
 .login__block__header>i {
@@ -11791,8 +11798,8 @@ textarea {
 }
 
 .login__block__header>img {
-    width: auto;
-    height: auto;
+    width: 174px;
+    height: 40px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -13325,6 +13332,7 @@ textarea {
     text-align: center;
     width: 100%;
     height: 100%;
+    margin-top: 30px;
 }
 
 .easy-pie-chart__value:after {

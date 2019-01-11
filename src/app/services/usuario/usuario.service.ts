@@ -11,6 +11,9 @@ import { PerfilService } from '../../components/perfil/perfil.service';
 import { SubirarchivoService } from '../subirarchivo/subirarchivo.service';
 import { WebsocketService } from '../websocket/websocket.service';
 
+declare var jQuery: any;
+declare var $: any;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -112,13 +115,7 @@ export class UsuarioService {
                     background: 'rgba(0, 0, 0, 0.96)'
                   });
                 }, (error: any) => {
-                  if ( error.status !== 401 ) {
-                    swal({
-                      title: 'Error al actualizar usuario',
-                      text: 'revise los datos proporcionados',
-                      type: 'error',
-                      background: 'rgba(0, 0, 0, 0.96)'
-                    });
+                  if ( error.status === 401 ) {
                     this._perfilService.ocultarModalPerfil();
                     return;
                   }
@@ -134,6 +131,12 @@ export class UsuarioService {
                     return;
                   }
 
+                  swal({
+                    title: 'Error al actualizar usuario',
+                    text: 'revise los datos proporcionados',
+                    type: 'error',
+                    background: 'rgba(0, 0, 0, 0.96)'
+                  });
                   console.log(error);
                   this._perfilService.ocultarModalPerfil();
                 }
@@ -154,4 +157,22 @@ export class UsuarioService {
   cargarUsuarios() {}
   borrarUsuario() {}
   buscarUsuarios() {}
+
+  cargarPlugins() {
+    $('.easy-pie-chart').easyPieChart({
+      barColor: 'rgba(255,87,51,255',
+      scaleColor: false,
+      trackColor: 'black',
+      lineWidth: 3,
+      lineCap: 'circle',
+      size: 80
+    });
+
+    $('.peity-bar').peity('bar', {
+      fill: ['rgba(255,87,51,255'],
+      height: 20,
+      width: 65,
+      stroke: '#4d89f9'
+    });
+  }
 }

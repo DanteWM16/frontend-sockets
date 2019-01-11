@@ -7,7 +7,8 @@ import {
     UsuarioService,
     WebsocketService,
     SubirarchivoService,
-    SidebarService
+    SidebarService,
+    PersonalService
  } from './services.index';
 
 @NgModule({
@@ -21,7 +22,8 @@ import {
     providers: [
         UsuarioService,
         WebsocketService,
-        SubirarchivoService
+        SubirarchivoService,
+        PersonalService
     ],
 
     declarations: []

@@ -10,6 +10,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NotifierModule } from 'angular-notifier';
 import { opcionesNotifier } from './config/config';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { NgxMaskModule } from 'ngx-mask';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -21,6 +22,7 @@ import { PipesModule } from './pipes/pipes.module';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { CrearUsuarioComponent } from './components/crear-usuario/crear-usuario.component';
 import { AuthInterceptor } from './clases/interceptor';
+import { ModalPersonalComponent } from './components/modal-personal/modal-personal.component';
 
 const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
 
@@ -33,7 +35,8 @@ const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
     HeaderComponent,
     SidebarComponent,
     PerfilComponent,
-    CrearUsuarioComponent
+    CrearUsuarioComponent,
+    ModalPersonalComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ const config: SocketIoConfig = { url: 'http://localhost:5000', options: {} };
     HttpClientModule,
     NotifierModule.withConfig(opcionesNotifier),
     SocketIoModule.forRoot(config),
+    NgxMaskModule.forRoot(),
     PipesModule
   ],
   providers: [

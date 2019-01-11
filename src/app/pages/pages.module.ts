@@ -10,11 +10,13 @@ import { configSockets } from '../config/config';
 import { PipesModule } from '../pipes/pipes.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../clases/interceptor';
+import { PersonalComponent } from './personal/personal.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    PersonalComponent
   ],
   providers: [
   ],
